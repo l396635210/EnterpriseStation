@@ -31,6 +31,11 @@ class Category
         $this->blogPosts = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     public function getPosts()
     {
         return $this->posts;
@@ -62,14 +67,14 @@ class Category
     /**
      * @var int
      *
-     * @ORM\Column(name="parent_id", type="integer")
+     * @ORM\Column(name="parent_id", type="integer", nullable=true)
      */
     private $parentId;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="data", type="text")
+     * @ORM\Column(name="data", type="text", nullable=true)
      */
     private $data;
     /**
