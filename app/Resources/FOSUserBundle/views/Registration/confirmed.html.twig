@@ -1,0 +1,13 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block pass %}
+    <p id="findpass">{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+
+{% endblock pass %}
+{% block fos_user_content %}
+    {% if targetUrl %}
+        <p><a class="submit" href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+    {% endif %}
+{% endblock %}
