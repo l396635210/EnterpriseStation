@@ -8,44 +8,37 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class CategoryAdmin extends AbstractAdmin
+class LinkAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('name', 'text', [
-            'label' => '标题',
-        ])
-            ->add('parent', 'sonata_type_model', [
-                'label' => '父栏目',
-                'required' => false,
-            ])
-            ->add('status', 'checkbox', [
-                'label' => '是否有效',
-            ])
-            ->add('data', 'textarea', [
-                'label' => '其他数据',
-                'required' => false,
-            ]);
+        $formMapper->add('name', 'text',[
+                    'label' => '标题',
+                ])
+                ->add('url', 'text', [
+                    'label' => '地址',
+                ]);
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper->add('name')
-            ->add('parent');
+            ->add('url')
+        ;
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('parent')
-            ->addIdentifier('name');
+        $listMapper->addIdentifier('url')
+            ->addIdentifier('name')
+        ;
     }
 
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
             ->add('name')
-            ->add('parent')
-            ->add('status')
+            ->add('url')
         ;
     }
 }

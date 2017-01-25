@@ -205,4 +205,28 @@ class Post
     {
         return $this->user;
     }
+
+    /**
+     * Set data
+     *
+     * @param string $data
+     *
+     * @return Post
+     */
+    public function setData($data)
+    {
+        $this->data = $data;
+
+        return $this;
+    }
+
+    /**
+     * Get data
+     *
+     * @return string
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
 }
