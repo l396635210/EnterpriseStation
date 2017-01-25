@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 class PostAdmin extends AbstractAdmin
 {
@@ -48,6 +49,15 @@ class PostAdmin extends AbstractAdmin
     {
         $listMapper->addIdentifier('category')
             ->addIdentifier('title')
+        ;
+    }
+
+    protected function configureShowFields(ShowMapper $showMapper)
+    {
+        $showMapper
+            ->add('title')
+            ->add('category')
+            ->add('body')
         ;
     }
 }

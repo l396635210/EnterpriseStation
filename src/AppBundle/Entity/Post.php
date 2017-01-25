@@ -11,6 +11,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Post
 {
+    public function __toString()
+    {
+        return $this->title;
+    }
+
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="posts")
      */
@@ -57,7 +62,7 @@ class Post
     /**
      * @var string
      *
-     * @ORM\Column(name="data", type="text")
+     * @ORM\Column(name="data", type="text", nullable=true)
      */
     private $data;
 

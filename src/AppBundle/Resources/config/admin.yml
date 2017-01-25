@@ -1,3 +1,9 @@
+sonata_admin:
+    #title:      Acme
+    #title_logo: img/logo_small.png
+    templates:
+        show:       AppBundle:Admin:Display_Client.html.twig
+
 sonata_formatter:
     formatters:
         markdown:
@@ -37,6 +43,28 @@ sonata_formatter:
             extensions: [] # Twig formatter cannot have extensions
 
 services:
+    app.admin.topic:
+        class: AppBundle\Admin\TopicAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "内容管理", label: "专题管理" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Topic
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+
+    app.admin.link:
+        class: AppBundle\Admin\LinkAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "内容管理", label: "友链管理" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Link
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+
     app.admin.category:
         class: AppBundle\Admin\CategoryAdmin
         tags:
