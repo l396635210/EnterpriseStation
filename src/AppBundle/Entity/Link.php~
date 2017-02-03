@@ -12,6 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Link
 {
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     /**
      * @var int
      *
@@ -38,7 +43,7 @@ class Link
     /**
      * @var string
      *
-     * @ORM\Column(name="data", type="text")
+     * @ORM\Column(name="data", type="text", nullable=true)
      */
     private $data;
 
@@ -99,5 +104,28 @@ class Link
     {
         return $this->url;
     }
-}
 
+    /**
+     * Set data
+     *
+     * @param string $data
+     *
+     * @return Link
+     */
+    public function setData($data)
+    {
+        $this->data = $data;
+
+        return $this;
+    }
+
+    /**
+     * Get data
+     *
+     * @return string
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
+}

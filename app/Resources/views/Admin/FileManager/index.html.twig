@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        {% for dir in fileManager.directories %}
+            <div class="col-md-3">
+                <p>
+                    <a href="{{ path("app.admin.fileManager.index", {path:dir.getRelativePathname}) }}">
+                        <i class="fa fa-folder-o" aria-hidden="true"></i>{{ dir.getRelativePathname }}
+                    </a>
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        {% for file in fileManager.files %}
+            <div class="col-md-3">
+                {% if( file.getExtension | isImage  ) %}
+                    <p><img class="img-thumbnail" src="{{ asset(file.assetPath) }}" alt="{{ file.getRelativePathname }}"></p>
+                    <p>{{ file.getRelativePathname }}</p>
+                {% else %}
+                    <p><a href="{{ asset(file.assetPath) }}" target="_blank">{{ file.getRelativePathname }}</a></p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        {% include 'Admin/FileManager/_upload_form.html.twig' %}
+    </div>
+</div>
+{% endblock %}

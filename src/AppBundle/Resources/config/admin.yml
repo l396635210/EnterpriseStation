@@ -43,6 +43,17 @@ sonata_formatter:
             extensions: [] # Twig formatter cannot have extensions
 
 services:
+    app.admin.image:
+        class: AppBundle\Admin\ImageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "内容管理", label: "图片管理" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Image
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+
     app.admin.topic:
         class: AppBundle\Admin\TopicAdmin
         tags:

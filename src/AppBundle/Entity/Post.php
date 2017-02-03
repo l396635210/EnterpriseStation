@@ -59,6 +59,22 @@ class Post
      */
     private $body;
 
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="create_date", type="date")
+     */
+    private $createDate;
+
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="publish_date", type="date")
+     */
+    private $publishDate;
+
     /**
      * @var string
      *
@@ -233,5 +249,53 @@ class Post
     public function getData()
     {
         return $this->data;
+    }
+
+    /**
+     * Set createDate
+     *
+     * @param \DateTime $createDate
+     *
+     * @return Post
+     */
+    public function setCreateDate($createDate)
+    {
+        $this->createDate = $createDate;
+
+        return $this;
+    }
+
+    /**
+     * Get createDate
+     *
+     * @return \DateTime
+     */
+    public function getCreateDate()
+    {
+        return $this->createDate;
+    }
+
+    /**
+     * Set publishDate
+     *
+     * @param \DateTime $publishDate
+     *
+     * @return Post
+     */
+    public function setPublishDate($publishDate)
+    {
+        $this->publishDate = $publishDate;
+
+        return $this;
+    }
+
+    /**
+     * Get publishDate
+     *
+     * @return \DateTime
+     */
+    public function getPublishDate()
+    {
+        return $this->publishDate;
     }
 }

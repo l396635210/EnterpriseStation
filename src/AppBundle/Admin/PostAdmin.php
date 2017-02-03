@@ -25,6 +25,14 @@ class PostAdmin extends AbstractAdmin
                     'label' => '内容',
                     'required' => true,
                 ])
+                ->add('createDate', 'date', [
+                    'label' => '创建日期',
+                    'data'  => new \DateTime('now'),
+                ])
+                ->add('publishDate', 'date', [
+                    'label' => '发布日期',
+                    'data'  => new \DateTime('now'),
+                ])
                 ->add('status', 'checkbox', [
                     'label' => '是否有效',
                 ])

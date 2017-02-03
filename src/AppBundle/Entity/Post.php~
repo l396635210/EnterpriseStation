@@ -11,6 +11,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Post
 {
+    public function __toString()
+    {
+        return $this->title;
+    }
+
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="posts")
      */
@@ -54,10 +59,26 @@ class Post
      */
     private $body;
 
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="create_date", type="date")
+     */
+    private $createDate;
+
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="publish_date", type="date")
+     */
+    private $publishDate;
+
     /**
      * @var string
      *
-     * @ORM\Column(name="data", type="text")
+     * @ORM\Column(name="data", type="text", nullable=true)
      */
     private $data;
 

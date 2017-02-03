@@ -12,6 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Topic
 {
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
     /**
      * @var int
      *
@@ -38,7 +43,7 @@ class Topic
     /**
      * @var string
      *
-     * @ORM\Column(name="data", type="text")
+     * @ORM\Column(name="data", type="text", nullable=true)
      */
     private $data;
 
@@ -125,4 +130,3 @@ class Topic
         return $this->data;
     }
 }
-
